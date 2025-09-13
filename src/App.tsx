@@ -1,12 +1,13 @@
-import Hero from "./components/container/HeroSection";
+import Hero from './components/container/HeroSection';
+import Layout from './components/container/Layout';
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl">code here</h1>
-      {/* example */}
-      <Hero />
-    </>
+    <Layout>
+      <main>
+        <Hero />
+      </main>
+    </Layout>
   );
 }
 

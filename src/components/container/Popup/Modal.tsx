@@ -1,6 +1,10 @@
-import React from "react";
-// fix this component, and there's more props you can use here
-const Modal = ({ children }) => {
+import React from 'react';
+
+type ModalProps = {
+  children: React.ReactNode;
+};
+
+const Modal: React.FC<ModalProps> = ({ children }) => {
   return <div>{children}</div>;
 };
 
