@@ -24,6 +24,19 @@ const Header: React.FC = () => {
   const logoSrc = darkMode ? images.logoDark : images.logoLight;
   const hamburgerSrc = darkMode ? icons.hamburgerDark : icons.hamburger;
 
+  React.useEffect(() => {
+    if (isHamburgerOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+
+    // cleanup just in case
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isHamburgerOpen]);
+
   return (
     <header className='sticky top-0 backdrop-blur-2xl z-60 backdrop:blur-2xl py-6 px-4 md:px-[140px]'>
       <div className='flex justify-between items-center '>
@@ -66,7 +79,7 @@ const Header: React.FC = () => {
         id='mobile-menu'
         className={clsx(
           isHamburgerOpen
-            ? 'fixed right-0 top-16 z-50 h-screen w-full bg-white dark:bg-black dark:text-white px-4 py-6 '
+            ? 'fixed right-0 top-16 z-50 h-screen w-full bg-white dark:bg-black dark:text-white px-4 py-6'
             : 'hidden overflow-y-hidden',
           'md:hidden'
         )}
