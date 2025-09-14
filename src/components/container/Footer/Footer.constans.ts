@@ -5,22 +5,26 @@ const socialMediaItems: SocialMediaProps[] = [
   {
     name: 'facebook',
     href: 'https://facebook.com',
-    src: icons.facebook,
+    imgSrcLight: icons.facebook,
+    imgSrcDark: icons.facebookDark,
   },
   {
     name: 'instagram',
     href: 'https://instagram.com',
-    src: icons.instagram,
+    imgSrcLight: icons.instagram,
+    imgSrcDark: icons.instagramDark,
   },
   {
     name: 'linkedin',
     href: 'https://linkedin.com',
-    src: icons.linkedin,
+    imgSrcLight: icons.linkedin,
+    imgSrcDark: icons.linkedinDark,
   },
   {
     name: 'tiktok',
     href: 'https://tiktok.com',
-    src: icons.tiktok,
+    imgSrcLight: icons.tiktok,
+    imgSrcDark: icons.tiktokDark,
   },
 ];
 

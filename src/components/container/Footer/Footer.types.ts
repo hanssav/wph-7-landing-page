@@ -7,7 +7,8 @@ type SocialMediaIconProps = {
 type SocialMediaProps = {
   name: string;
   href: string;
-  src: string;
+  imgSrcLight: string;
+  imgSrcDark: string;
 };
 
 export type { SocialMediaIconProps, SocialMediaProps };

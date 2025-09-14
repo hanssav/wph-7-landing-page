@@ -1,9 +1,10 @@
 import React from 'react';
 import Image from '../../ui/Image';
-import { images, navItems } from '../../../constants';
+import { images, navItems, themeAsConst } from '../../../constants';
 import type { SocialMediaIconProps } from './Footer.types';
 import { socialMediaItems } from './Footer.constans';
 import Typography from '../../ui/Typography';
+import { useTheme } from '../../../hooks/useTheme';
 
 const NavListItems: React.FC<{ label: string }> = ({ label }) => {
   return (
@@ -27,12 +28,17 @@ const SocialMediaIcon: React.FC<SocialMediaIconProps> = ({ src, href, id }) => {
 };
 
 const Footer: React.FC = () => {
+  const { theme } = useTheme();
+  const darkMode = theme === themeAsConst.dark;
+
+  const logoSrc = darkMode ? images.logoDark : images.logoLight;
+
   return (
     <footer className='py-6 px-4 md:px-[140px] flex flex-col gap-2'>
       <div className='flex flex-col gap-6 bg-base-50 dark:bg-base-950 border border-base-border dark:border-base-800 rounded-3xl p-5 lg:p-10 lg:gap-[60px]'>
         <div className='flex flex-col gap-6 justify-start lg:justify-between lg:flex-row-reverse'>
           <Image
-            src={images.logoLight}
+            src={logoSrc}
             id='footer-logo'
             className='h-8 max-w-[140px] lg:h-9 lg:max-w-[159px]'
           />
@@ -58,7 +64,7 @@ const Footer: React.FC = () => {
           <div className='flex gap-4'>
             {socialMediaItems.map((item, idx) => (
               <SocialMediaIcon
-                src={item.src}
+                src={darkMode ? item.imgSrcDark : item.imgSrcLight}
                 href={item.href}
                 id={item.name}
                 key={idx}
