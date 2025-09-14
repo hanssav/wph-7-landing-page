@@ -27,7 +27,7 @@ const Header: React.FC = () => {
         />
 
         <nav className='hidden md:inline'>
-          <ul className='flex gap-3 text-base font-semibold items-center'>
+          <ul className='flex gap-3 items-center'>
             {navItems.map((menu) => (
               <ListMenu
                 key={menu.id}
@@ -61,7 +61,7 @@ const Header: React.FC = () => {
           'md:hidden'
         )}
       >
-        <ul className='gap-3 text-base font-semibold items-center'>
+        <ul className='gap-3 items-center'>
           {navItems.map((menu) => (
             <ListMenu
               key={menu.id}
