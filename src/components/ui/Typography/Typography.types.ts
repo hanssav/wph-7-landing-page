@@ -50,4 +50,17 @@ type TypographyProps<T extends ElementType = 'p'> = {
   as?: T;
 } & React.ComponentPropsWithoutRef<T>;
 
-export type { TypographyProps, TextSize, FontWeight };
+type TitleProps = { children: React.ReactNode } & TypographyProps;
+
+type SubtitleProps = {
+  children: React.ReactNode;
+  className?: string;
+} & TypographyProps;
+
+export type {
+  TypographyProps,
+  TextSize,
+  FontWeight,
+  TitleProps,
+  SubtitleProps,
+};
