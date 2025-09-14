@@ -28,7 +28,7 @@ const Hero: React.FC = () => {
 
   return (
     <SectionWrapper id='hero-section' className='lg:h-[747px] lg:flex'>
-      <div className='flex flex-col gap-10 lg:w-[653px] z-50 self-center'>
+      <div className='flex flex-col gap-10 lg:max-w-[653px] z-50 self-center'>
         <div className='flex flex-col gap-2'>
           <Typography
             as='h1'
@@ -40,7 +40,7 @@ const Hero: React.FC = () => {
             <span className='text-primary'>Smarter Growth</span>
           </Typography>
 
-          <Typography size={{ base: 'md', lg: 'xl' }} weight='normal'>
+          <Typography size={{ base: 'md', lg: 'xl' }} weight='medium'>
             We deliver tailored IT solutions to help you scale with speed and
             confidence.
           </Typography>
