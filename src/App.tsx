@@ -3,6 +3,7 @@ import Brand from './components/container/BrandSection';
 import Hero from './components/container/HeroSection';
 import Layout from './components/container/Layout';
 import Process from './components/container/ProcessSection';
+import Service from './components/container/ServiceSection';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Brand />
         <About />
         <Process />
+        <Service />
       </main>
     </Layout>
   );
