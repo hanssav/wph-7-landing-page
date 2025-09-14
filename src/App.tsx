@@ -3,7 +3,7 @@ import Brand from './components/container/BrandSection';
 import Hero from './components/container/HeroSection';
 import Industry from './components/container/IndustrySection';
 import Layout from './components/container/Layout';
-import Portofolio from './components/container/PortofolioSection /Portofolio';
+import Portofolio from './components/container/PortofolioSection ';
 import Process from './components/container/ProcessSection';
 import Service from './components/container/ServiceSection';
 
