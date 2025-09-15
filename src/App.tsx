@@ -1,5 +1,6 @@
 import About from './components/container/AboutSection';
 import Brand from './components/container/BrandSection';
+import ContactMe from './components/container/ContactMeSection';
 import Hero from './components/container/HeroSection';
 import Industry from './components/container/IndustrySection';
 import Layout from './components/container/Layout';
@@ -22,6 +23,7 @@ function App() {
         <Portofolio />
         <Testimonial />
         <Qna />
+        <ContactMe />
       </main>
     </Layout>
   );
