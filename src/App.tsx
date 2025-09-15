@@ -5,6 +5,7 @@ import Industry from './components/container/IndustrySection';
 import Layout from './components/container/Layout';
 import Portofolio from './components/container/PortofolioSection ';
 import Process from './components/container/ProcessSection';
+import Qna from './components/container/QnaSection';
 import Service from './components/container/ServiceSection';
 import Testimonial from './components/container/TestimonialSection/Testimonial';
 
@@ -20,6 +21,7 @@ function App() {
         <Industry />
         <Portofolio />
         <Testimonial />
+        <Qna />
       </main>
     </Layout>
   );

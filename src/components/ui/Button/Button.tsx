@@ -4,7 +4,7 @@ import type { ButtonProps } from './Button.types';
 
 const variantClasses = {
   primary: 'bg-primary rounded-full text-white',
-  ghost: 'bg-transparent rounded-full',
+  ghost: 'rounded-full',
 };
 
 const Button: React.FC<ButtonProps> = ({
