@@ -1,11 +1,70 @@
 import React from 'react';
-import { Subtitle, Title } from '../../ui/Typography';
+import Typography, { Subtitle, Title } from '../../ui/Typography';
 import SectionWrapper from '../SectionWrapper';
 import Input, { Checkbox, Label, Textarea } from '../../ui/Input';
 import Button from '../../ui/Button';
 import { services } from './ContactMe.constants';
+import Modal from '../Popup';
+import Image from '../../ui/Image';
+import { images } from '../../../constants';
+import type { NotificationProps } from './ContactMe.types';
+
+const modalVariants = {
+  success: {
+    title: 'Message Received!',
+    sub: 'Thanks for reaching out — we’ll get back to you as soon as possible.',
+    src: images.successMessage,
+    id: 'message-success',
+  },
+  error: {
+    title: 'Oops! Something went wrong.',
+    sub: 'We couldn’t send your message. Please try again or check your connection.',
+    src: images.failedMessage,
+    id: 'message-failed',
+  },
+};
+
+const Notification: React.FC<NotificationProps> = ({
+  open,
+  setOpen,
+  isSuccess,
+}) => {
+  const { title, sub, src, id } = isSuccess
+    ? modalVariants.success
+    : modalVariants.error;
+
+  return (
+    <Modal isOpen={open} onClose={() => setOpen(false)}>
+      <div className='w-full flex flex-col items-center justify-center bg-neutral-50 dark:bg-neutral-950 p-6 lg:p-2 mt-5'>
+        <Image id={id} src={src} />
+      </div>
+
+      <div className='w-full flex flex-col items-center justify-center p-6 gap-4'>
+        <Typography weight='bold' size={{ base: 'lg', lg: 'xl' }}>
+          {title}
+        </Typography>
+        <Typography
+          weight='normal'
+          size={{ base: 'sm', lg: 'md' }}
+          className='text-center text-neutral-400'
+        >
+          {sub}
+        </Typography>
+        <Button
+          className='w-full text-sm leading-sm font-bold lg:max-w-[361px] lg:text-md lg:leading-md'
+          onClick={() => setOpen(false)}
+        >
+          Back to Home
+        </Button>
+      </div>
+    </Modal>
+  );
+};
 
 const ContactMe: React.FC = () => {
+  const [open, setOpen] = React.useState<boolean>(false);
+  const [isSuccess, setIsSucces] = React.useState<boolean>(false);
+
   return (
     <SectionWrapper
       id='contact-me'
@@ -44,20 +103,32 @@ const ContactMe: React.FC = () => {
 
         {/* <!-- CCHECKBOX --> */}
         <div className='input-item flex flex-col gap-[14px] w-full'>
-          <label htmlFor='services' className='font-bold text-sm leading-sm'>
+          <Typography weight='bold' size='sm'>
             Services
-          </label>
+          </Typography>
 
           <div className='grid grid-cols-1 lg:grid-cols-2 gap-[14px]'>
             {services.map((service) => (
-              <Checkbox key={service.id} label={service.label} />
+              <Checkbox
+                key={service.id}
+                id={service.id}
+                label={service.label}
+              />
             ))}
           </div>
         </div>
 
-        <Button className='font-bold text-sm leading-sm lg:text-md lg:leading-md'>
+        <Button
+          className='font-bold text-sm leading-sm lg:text-md lg:leading-md '
+          onClick={() => {
+            setIsSucces(Math.random() > 0.5); // random true / false
+            setOpen(true);
+          }}
+        >
           Send
         </Button>
+
+        <Notification isSuccess={isSuccess} open={open} setOpen={setOpen} />
       </div>
     </SectionWrapper>
   );

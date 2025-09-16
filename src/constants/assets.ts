@@ -64,4 +64,8 @@ export const images = {
   testimonialUser1: '/images/user-testimoni-1.png',
   testimonialUser2: '/images/user-testimoni-2.png',
   testimonialUser3: '/images/user-testimoni-3.png',
+
+  // message
+  successMessage: './images/message-success.svg',
+  failedMessage: './images/message-failed.svg',
 };

@@ -1,16 +1,22 @@
-import React from 'react';
 import clsx from 'clsx';
 
 type CheckboxProps = {
+  id: string;
   label: string;
   checked?: boolean;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
+const Checkbox: React.FC<CheckboxProps> = ({
+  id,
+  label,
+  checked,
+  onChange,
+}) => {
   return (
-    <label className='inline-flex items-center gap-2 cursor-pointer relative'>
+    <div className='flex items-center gap-2'>
       <input
+        id={id}
         type='checkbox'
         className={clsx(
           'peer appearance-none w-5 h-5 border border-gray-400 rounded-sm bg-white',
@@ -30,10 +36,13 @@ const Checkbox: React.FC<CheckboxProps> = ({ label, checked, onChange }) => {
       >
         <path d='M5 13l4 4L19 7' />
       </svg>
-      <span className='font-medium text-sm leading-sm lg:text-md lg:leading-md'>
+      <label
+        htmlFor={id}
+        className='font-medium text-sm leading-sm lg:text-md lg:leading-md cursor-pointer'
+      >
         {label}
-      </span>
-    </label>
+      </label>
+    </div>
   );
 };
 

@@ -1,7 +1,6 @@
-type Faqs = {
-  id: string;
+type FaqItemProps = {
+  id: number | string;
   question: string;
   answer: string;
 };
-
-export type { Faqs };
+export type { FaqItemProps };

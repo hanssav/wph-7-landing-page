@@ -31,7 +31,7 @@ const BlurWrapper: React.FC<{ align: 'left' | 'right' }> = ({
 const Testimonial: React.FC = () => {
   return (
     <SectionWrapper
-      id='testimonial'
+      id='testimonials'
       className='flex flex-col py-10 gap-10 lg:py-20 lg:gap-16 overflow-hidden relative'
     >
       {/* <!-- BLUR --> */}
@@ -39,13 +39,11 @@ const Testimonial: React.FC = () => {
         <BlurWrapper key={i} align={a} />
       ))}
 
-      {/* <!-- Title --> */}
       <div className='flex flex-col gap-[11px] text-center'>
         <Title>What Partners Say About Working With Us</Title>
         <Subtitle>Trusted voices. Real experiences. Proven results.</Subtitle>
       </div>
 
-      {/* <!-- CONTENT --> */}
       <div id='review-slideshow' className='flex justify-center gap-5'>
         {testimonials.map((t) => (
           <div

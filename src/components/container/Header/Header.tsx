@@ -4,13 +4,14 @@ import { icons, images, navItems, themeAsConst } from '../../../constants';
 import Button from '../../ui/Button';
 import clsx from 'clsx';
 import type { NavItemsProps } from '../../../types';
-import DarkModeToggle from '../../ui/DarkModeToggle';
 import { useTheme } from '../../../hooks/useTheme';
 
-const ListMenu: React.FC<NavItemsProps> = ({ link, label }) => {
+const ListMenu: React.FC<NavItemsProps> = ({ link, label, handleClick }) => {
   return (
     <li className='text-md leading-md font-semibold md:px-4 py-2'>
-      <a href={link}>{label}</a>
+      <a href={link} onClick={(e) => handleClick?.(e, link)}>
+        {label}
+      </a>
     </li>
   );
 };
@@ -37,14 +38,45 @@ const Header: React.FC = () => {
     };
   }, [isHamburgerOpen]);
 
+  const scrollToSection = (link: string, headerOffset = 80) => {
+    if (link.startsWith('#')) {
+      const target = document.querySelector(link);
+      if (target) {
+        const elementPosition =
+          target.getBoundingClientRect().top + window.scrollY;
+        const offsetPosition = elementPosition - headerOffset;
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        });
+      }
+    }
+  };
+
+  const handleClick = (e: React.MouseEvent<HTMLElement>, link: string) => {
+    if (link.startsWith('#')) {
+      e.preventDefault();
+      scrollToSection(link, 80); // pass header height
+    }
+
+    setIsHamburgerOpen(false);
+  };
+
   return (
-    <header className='sticky top-0 backdrop-blur-2xl z-60 backdrop:blur-2xl py-6 px-4 md:px-[140px]'>
+    <header
+      className={clsx(
+        'sticky top-0 z-60 py-6 px-4 md:px-[140px] backdrop-blur-2xl transition-colors duration-300',
+        isHamburgerOpen ? 'bg-white dark:bg-black' : 'bg-transparent'
+      )}
+    >
       <div className='flex justify-between items-center '>
         <Image
           src={logoSrc}
           alt='logo-light'
           id='logo-light'
-          className='h-[36px] w-[159px]'
+          className='h-[36px] w-[159px] cursor-pointer'
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         />
 
         <nav className='hidden md:inline'>
@@ -55,15 +87,18 @@ const Header: React.FC = () => {
                 id={menu.id}
                 link={menu.link}
                 label={menu.label}
+                handleClick={(e) => handleClick(e, menu.link)}
               />
             ))}
           </ul>
         </nav>
 
-        {/* DarkMode Toggle for testing */}
-        <DarkModeToggle />
-
-        <Button className='w-[197px] hidden md:block'>Let's Talk</Button>
+        <Button
+          className='w-[197px] hidden md:block'
+          onClick={(e) => handleClick(e, '#contact-me')}
+        >
+          Let's Talk
+        </Button>
         {/* mobile */}
         <Button
           variant='ghost'
@@ -79,23 +114,29 @@ const Header: React.FC = () => {
         id='mobile-menu'
         className={clsx(
           isHamburgerOpen
-            ? 'fixed right-0 top-16 z-50 h-screen w-full bg-white dark:bg-black dark:text-white px-4 py-6'
+            ? 'fixed right-0 top-20 z-50 h-screen w-full bg-white dark:bg-black dark:text-white px-4 py-6'
             : 'hidden overflow-y-hidden',
           'md:hidden'
         )}
       >
-        <ul className='gap-3 items-center'>
+        <ul className='gap-3'>
           {navItems.map((menu) => (
             <ListMenu
               key={menu.id}
               id={menu.id}
               link={menu.link}
               label={menu.label}
+              handleClick={(e) => handleClick(e, menu.link)}
             />
           ))}
 
           <li className='py-2'>
-            <Button className='w-full'>Let's Talk</Button>
+            <Button
+              className='w-full'
+              onClick={(e) => handleClick(e, '#contact-me')}
+            >
+              Let's Talk
+            </Button>
           </li>
         </ul>
       </nav>

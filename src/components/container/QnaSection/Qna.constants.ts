@@ -1,6 +1,6 @@
-import type { Faqs } from './Qna.types';
+import type { FaqItemProps } from './Qna.types';
 
-const faqs: Faqs[] = [
+const faqs: FaqItemProps[] = [
   {
     id: 'faq-1',
     question: 'What services do you offer?',

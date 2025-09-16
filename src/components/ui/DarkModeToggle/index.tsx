@@ -1,24 +1,36 @@
+import React, { useEffect, useState } from 'react';
 import { useTheme } from '../../../hooks/useTheme';
+import clsx from 'clsx';
 
-const DarkModeToggle = () => {
+const DarkModeToggle: React.FC = () => {
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setMounted(true), 20);
+    return () => clearTimeout(t);
+  }, []);
 
   return (
     <button
+      aria-label='Toggle dark mode'
       onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-      className='relative w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-300
-                 bg-yellow-300 dark:bg-gray-700'
+      className={clsx(
+        'flex items-center justify-center rounded-full',
+        'h-14 w-14 text-3xl cursor-pointer',
+        'bg-transparent shadow-lg',
+
+        // Enable transforms + smooth transition
+        'transform transition-all duration-500 ease-out',
+
+        // Respect prefers-reduced-motion (no animation for users who disable motion)
+        'motion-safe:transition-all motion-reduce:transition-none',
+
+        // Animate from bottom + fade in (on mount state change)
+        mounted ? 'translate-y-0 opacity-100' : 'translate-y-24 opacity-0'
+      )}
     >
-      {/* The sliding circle */}
-      <div
-        className={`absolute top-1 left-1 w-6 h-6 rounded-full bg-white shadow-md
-                    transform transition-transform duration-300
-                    ${theme === 'dark' ? 'translate-x-6' : 'translate-x-0'}`}
-      >
-        <span className='flex items-center justify-center w-full h-full text-lg'>
-          {theme === 'dark' ? '🌙' : '☀️'}
-        </span>
-      </div>
+      {theme === 'dark' ? '🌙' : '☀️'}
     </button>
   );
 };
