@@ -76,7 +76,10 @@ const Header: React.FC = () => {
           alt='logo-light'
           id='logo-light'
           className='h-[36px] w-[159px] cursor-pointer'
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          onClick={() => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setIsHamburgerOpen(false);
+          }}
         />
 
         <nav className='hidden md:inline'>

@@ -13,16 +13,12 @@ const BlurWrapper: React.FC<{ align: 'left' | 'right' }> = ({
     <div
       className={clsx(
         'hidden lg:block absolute z-20 top-7 lg:top-48 h-2/3 w-[500px] bg-white dark:bg-black',
-        // Position horizontally based on alignLeft (either left or right side)
         alignLeft ? 'left-0' : 'right-0',
-
-        // Apply gradient mask that fades out toward the opposite side
-        `lg:[mask-image:linear-gradient(to_${
-          alignLeft ? 'right' : 'left'
-        },black_10%,transparent_100%)]`,
-
-        // Ensure mask covers fully and doesn’t repeat
-        '[mask-repeat:no-repeat] [mask-size:100%_100%]'
+        // Add both mask and -webkit-mask
+        alignLeft
+          ? 'lg:[mask-image:linear-gradient(to_right,black_10%,transparent_100%)] lg:[-webkit-mask-image:linear-gradient(to_right,black_10%,transparent_100%)]'
+          : 'lg:[mask-image:linear-gradient(to_left,black_10%,transparent_100%)] lg:[-webkit-mask-image:linear-gradient(to_left,black_10%,transparent_100%)]',
+        '[mask-repeat:no-repeat] [mask-size:100%_100%] [-webkit-mask-repeat:no-repeat] [-webkit-mask-size:100%_100%]'
       )}
     ></div>
   );

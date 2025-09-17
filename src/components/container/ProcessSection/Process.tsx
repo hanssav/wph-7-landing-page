@@ -13,7 +13,6 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
   title,
   description,
   align,
-  basis,
 }) => {
   const [isOpen, setIsOpen] = React.useState<boolean>(false);
 
@@ -36,8 +35,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
       {/* Accordion */}
       <div
         className={clsx(
-          'relative grow flex w-full rounded-2xl border-base-border bg-base-50 dark:bg-base-950 dark:border-base-800 p-4 lg:p-6 justify-between lg:flex-none',
-          `lg:basis-${basis}`
+          'relative grow flex w-full rounded-2xl border-base-border bg-base-50 dark:bg-base-950 dark:border-base-800 p-4 lg:p-6 justify-between lg:flex-none lg:basis-45/100'
         )}
       >
         <details
@@ -74,7 +72,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({
 const Process: React.FC = () => {
   return (
     <SectionWrapper
-      id='service'
+      id='process'
       className='flex flex-col gap-6 py-10 lg:py-20 lg:gap-16'
     >
       <div className='flex flex-col gap-[11px] text-center'>
