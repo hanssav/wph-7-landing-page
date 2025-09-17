@@ -4,7 +4,7 @@ import { icons, images, navItems, themeAsConst } from '../../../constants';
 import Button from '../../ui/Button';
 import clsx from 'clsx';
 import type { NavItemsProps } from '../../../types';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../context/ThemeContext';
 
 const ListMenu: React.FC<NavItemsProps> = ({ link, label, handleClick }) => {
   return (

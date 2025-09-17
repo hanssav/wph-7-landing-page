@@ -4,7 +4,7 @@ import { images, navItems, themeAsConst } from '../../../constants';
 import type { SocialMediaIconProps } from './Footer.types';
 import { socialMediaItems } from './Footer.constans';
 import Typography from '../../ui/Typography';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../context/ThemeContext';
 
 const NavListItems: React.FC<{ label: string }> = ({ label }) => {
   return (

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../context/ThemeContext';
 import clsx from 'clsx';
 
 const DarkModeToggle: React.FC = () => {

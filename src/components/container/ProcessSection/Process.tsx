@@ -3,7 +3,7 @@ import SectionWrapper from '../SectionWrapper';
 import Typography, { Subtitle, Title } from '../../ui/Typography';
 import Image from '../../ui/Image';
 import { icons, themeAsConst } from '../../../constants';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../context/ThemeContext';
 import clsx from 'clsx';
 import type { ProcessStepProps } from './Process.types';
 import { processSteps } from './Process.constants';

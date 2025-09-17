@@ -4,7 +4,7 @@ import Image from '../../ui/Image';
 import { images, themeAsConst } from '../../../constants';
 import Button from '../../ui/Button';
 import Typography from '../../ui/Typography';
-import { useTheme } from '../../../hooks/useTheme';
+import { useTheme } from '../../../context/ThemeContext';
 
 const ImageBlur: React.FC = () => {
   return (
