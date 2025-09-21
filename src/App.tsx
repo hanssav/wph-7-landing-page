@@ -4,7 +4,7 @@ import ContactMe from './components/container/ContactMeSection';
 import Hero from './components/container/HeroSection';
 import Industry from './components/container/IndustrySection';
 import Layout from './components/container/Layout';
-import Portofolio from './components/container/PortofolioSection ';
+import Portofolio from './components/container/PortofolioSection';
 import Process from './components/container/ProcessSection';
 import Qna from './components/container/QnaSection';
 import Service from './components/container/ServiceSection';
